@@ -1,0 +1,79 @@
+1) 
+(a) P(A, B, B), P(x, y, z)
+	unifier: {x/A, y/B, z/B}
+
+(b) Q(y, G(A, B)), Q(G(x, x), y)
+	unification is impossible since it would require x to equal both A and B
+
+(c) R(x,A,z) , R(B,y,z)
+	unifier: {x/B, A/y}
+
+(d) Older (Father(y), y), Older (Father(x), John).
+	unifier: {x/John, y/John}
+
+(e) Knows(Father(y),y), Knows(x,x).
+	Unification is impossible: if x=y and x=father(y), then y=father(y), which would lead to infinite recursion
+
+2)
+
+a)
+1: ∀(x) Food(x) -> Likes(John, x)
+2: Food(Apples)
+3: Food(Chicken)
+4: ∀(x) [ ∃(y) eats(y, x) ^ ¬kills(x, y)] -> Food(x)
+5: A(x) [ ∃(y) kills(x, y) ] -> ¬Alive(x)
+6: Eats(Bill, Peanuts)
+7: Alive(Bill)
+8: A(x) Eats(Bill, x) -> Eats(Sue, x)
+
+b) 
+1: ¬Food(x) ∨ Likes(John, x)
+2: Food(Apples)
+3: Food(Chicken)
+4: ¬(Eats(y, x) ^ ¬Kills(x, y)) ∨ Food(x) --> ¬Eats(y, x) ∨ Kills(x, y)) ∨ Food(x)
+5: ¬Kills(y, x) ∨ ¬Alive(x)
+6: Eats(Bill, Peanuts)
+7: Alive(Bill)
+8: ¬Eats(Bill, x) ∨ Eats(Sue, x)
+
+c) Using 1-8 from b...
+9:  attempt to find contradiction | ¬Likes(John, Peanuts) 
+10:  1 & 8 | ¬Food(Peanuts) 
+11: 4 & 9 | ¬Eats(y, Peanuts) ∨ Kills(Peanuts, y)
+12: 10 & 6 | Kills(Peanuts, Bill)
+13: 5 & 11 | ¬Alive(Bill)
+14: 7 & 12 | Contradiction
+Therefore, ¬Likes(John, Peanuts) 
+
+d) Using 1-8 from b...
+9:  attempt to find contradiction | ¬Eats(Sue, x)
+10: 8 & 9  | ¬Eats(Bill, x)
+11: 6 & 10 | Contradiction, so Eats(Sue, x)
+6 & 11 |  Unification: x/Peanuts, so Eats(Sue, Peanuts)
+
+e) 
+1: ¬Food(x) ∨ Likes(John, x)
+2: Food(Apples)
+3: Food(Chicken)
+4: ¬(Eats(y, x) ^ ¬Kills(x, y)) ∨ Food(x) --> ¬Eats(y, x) ∨ Kills(x, y)) ∨ Food(x)
+5: ¬Kills(y, x) ∨ ¬Alive(x)
+6: ¬Eats(x, y) ∨ Dies(x)
+7: ¬Dies(x) ∨ ¬Alive(x)
+8: Alive(Bill)
+9: ¬Eats(Bill, x) ∨ Eats(Sue, x)
+
+10: attempt to find contradiction | ¬Eats(Sue, x)
+11: 9 & 10 | ¬Eats(Bill, x)
+12: 6 & 11 | Dies(Bill)
+13: 7 & 12 | ¬Alive(Bill)
+14: 8 & 13 | contradiction, so Eats(Sue, x)
+However, we don't know what Bill eats, so we don't know what Sue eats. 
+
+
+
+
+
+
+
+
+
