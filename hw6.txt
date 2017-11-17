@@ -72,8 +72,17 @@ However, we don't know what Bill eats, so we don't know what Sue eats.
 
 
 
+3) 
 
+Graph 1 is not satisfiable with 3 colors, but it is with 4. This tells us that the graph's minimum coloring has 4 colors. 
+The solution given by RSAT was:
+Node 1: Color 4 (Red)
+Node 2: Color 3 (Yellow)
+Node 3: Color 2 (Blue)
+Node 4: Color 3 (Yellow)
+Node 5: Color 1 (Green)
+Node 6: Color 2 (Blue)
+Node 7: Color 1 (Green)
 
-
-
+The minimum number of colors to color graph2 is 8.
 
